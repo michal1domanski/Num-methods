@@ -11,6 +11,7 @@ def Count_field(name,x,y = None):
 
 name = get_string('Figure: ')
 name = name.lower()
+
 while True:
     if name == 'circle' or name == 'rectangle' or name == 'rhombus' or name == 'triangle':
         break

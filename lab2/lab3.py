@@ -7,3 +7,4 @@ while Y == 0:
     Y = get_float('Y: ')
 
 print('X is divisable by Y' if X % Y == 0 else 'X is NOT divisable by Y')
+print(X%Y+0)

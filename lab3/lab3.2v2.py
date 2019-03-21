@@ -28,11 +28,9 @@ def rectangle():
 def comparingfields():
     name1 = get_string('first figure name: ')
     lname1 = name1.lower()
-    print(lname1)
     while lname1 != "circle" and lname1 != "triangle" and lname1 != "rectangle" and lname1 != "rhombus":
         name1 = get_string('first figure name: ')
         lname1 = name1.lower()
-        print(lname1)
     if lname1 == 'triangle' or lname1 == 'rhombus':
         field1 = trianglerhombus()
     elif lname1 == 'circle':

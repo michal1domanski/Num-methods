@@ -7,3 +7,4 @@ while T <= 0:
 h = get_float('h: ')
 while h <= 0:
     h = get_float('h: ')
+initial_x = get_float('x: ')

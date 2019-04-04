@@ -16,11 +16,23 @@ class Figure():
         elif self.name == 'rectangle':
             field = self.side1[0] * self.side1[1]
         elif self.name == 'trapeze':
-            field = ((self.side1[0] + self.side1[1]) * self.side1[3]) / 2
+            field = ((self.side1[0] + self.side1[1]) * self.side1[2]) / 2
         return field
+    
+    def perimeter(self):
+        if self.name == 'circle':
+            perimeter = self.side1[0] * 2 * pi
+            perimeter = round(perimeter,2)
+        elif self.name == 'rectangle':
+            perimeter = self.side1[0] * 2 + self.side1[1] * 2
+            perimeter = round(perimeter,2)
+        else:
+            perimeter = 'Imposible, perhaps the archives are incomplete...'
+        return perimeter
 
-a = Figure('circle',[12,13])
+a = Figure('trapeze',[12,13,2])
 print(round(a.field(),2))
+print(a.perimeter())
 
 # while i < 2:
 #     figure = get_string('What figure would you like to measure?: ')

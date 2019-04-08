@@ -30,7 +30,7 @@ class Figure():
             perimeter = 'Imposible, perhaps the archives are incomplete...'
         return perimeter
 
-a = Figure('trapeze',[12,13])
+a = Figure('trapeze',[12,13,12])
 
 print(round(a.field(),2))
 print(a.perimeter())

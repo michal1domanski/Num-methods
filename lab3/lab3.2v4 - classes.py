@@ -13,7 +13,7 @@ class Figure:
         elif self.figure == 'rectangle':
             field = self.side1 * self.side2
         elif self.figure == 'rhombus' or self.figure == 'triangle':
-            field = self.side1 * self.side1 * 0.5
+            field = self.side1 * self.side2 * 0.5
         elif self.figure == 'trapeze':
             field = ((self.side1 + self.side2) * self.side3) * 0.5
         return field

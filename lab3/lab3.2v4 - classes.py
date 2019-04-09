@@ -26,9 +26,19 @@ def compare_fields(field1, field2):
     else:
         return print('fields are equal ',field1,' ',field2)
 
-figure1 = Figure('rhombus', 12)
-figure2 = Figure('triangle',12)
-field1 = figure1.c_field()
-field2 = figure2.c_field()
+figure1 = Figure('rhombus', 12,18)
+figure2 = Figure('trapeze', 10,12,10)
+if figure1.side1 < 0 or figure1.side2 < 0 or figure1.side3 < 0:
+    print('Your mom gay')
+    field1 = 0
+else:
+    field1 = figure1.c_field()
+
+if figure2.side1 < 0 or figure2.side2 < 0 or figure2.side3 < 0:
+    print('Your mom gay')
+    field2 = 0
+else:
+    field2 = figure2.c_field()
+
 compare_fields(field1,field2)
     

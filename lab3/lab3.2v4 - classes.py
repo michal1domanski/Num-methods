@@ -12,10 +12,10 @@ class Figure:
         elif self.figure == 'rectangle':
             field = self.sides[0] * self.sides[1]
         elif self.figure == 'rhombus' or self.figure == 'triangle':
-            field = self.sides[0] * self.sides[1] * 0.5
+            field = self.sides[0] * self.sides[1] / 2
         elif self.figure == 'trapeze':
-            field = ((self.sides[0] + self.sides[1]) * self.sides[2]) * 0.5
-        return field
+            field = ((self.sides[0] + self.sides[1]) * self.sides[2]) / 2
+        return round(field,2)
 
 def compare_fields(field1, field2):
     if field1 > field2:
@@ -25,7 +25,9 @@ def compare_fields(field1, field2):
     else:
         return print('fields are equal ',field1,' ',field2)
 
-figure1 = Figure('rhombus', 12,18)
-figure2 = Figure('circle',12)
-print(Figure('rhombus',12,18,11).c_field())
+figure1 = Figure('trapeze', 13, 17)
+figure2 = Figure('triangle', 13, 17)
+field1 = Figure.c_field(figure1)
+field2 = Figure.c_field(figure2)
+compare_fields(field1,field2)
     

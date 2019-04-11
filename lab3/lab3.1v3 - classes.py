@@ -19,21 +19,21 @@ class Figure():
             field = ((self.side1[0] + self.side1[1]) * self.side1[2]) / 2
         return field
     
-    # def perimeter(self):
-    #     if self.name == 'circle':
-    #         perimeter = self.side1[0] * 2 * pi
-    #         perimeter = round(perimeter,2)
-    #     elif self.name == 'rectangle':
-    #         perimeter = self.side1[0] * 2 + self.side1[1] * 2
-    #         perimeter = round(perimeter,2)
-    #     else:
-    #         perimeter = 'Imposible, perhaps the archives are incomplete...'
-    #     return perimeter
+    def perimeter(self):
+        if self.name == 'circle':
+            perimeter = self.side1[0] * 2 * pi
+            perimeter = round(perimeter,2)
+        elif self.name == 'rectangle':
+            perimeter = self.side1[0] * 2 + self.side1[1] * 2
+            perimeter = round(perimeter,2)
+        else:
+            perimeter = 'Imposible, perhaps the archives are incomplete...'
+        return perimeter
 
 a = Figure('trapeze',[12,13,12])
 
 print(round(a.field(),2))
-# print(a.perimeter())
+print(a.perimeter())
 
 
 

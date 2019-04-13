@@ -2,7 +2,7 @@ from cs50 import get_float, get_string
 from math import pi
 
 class Figure():
-    def __init__ (self,name,side1):
+    def __init__ (self,name,*side1):
         self.name = name
         self.side1 = side1
 
@@ -30,9 +30,9 @@ class Figure():
             perimeter = 'Imposible, perhaps the archives are incomplete...'
         return perimeter
 
-a = Figure('trapeze',[12,13,12])
+a = Figure('chuj',12,13)
 
-print(round(a.field(),2))
+print(round(a.field(),2),'\n',a.name)
 print(a.perimeter())
 
 

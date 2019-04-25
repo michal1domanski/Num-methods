@@ -5,10 +5,10 @@ from scipy.optimize import differential_evolution
 from mpl_toolkits.mplot3d import Axes3D
 
 def f(x):
-    return -sin(sqrt((x[0]**2)+(x[1]**2)))/sqrt((x[0]**2)+(x[1]**2))
+    return sin(sqrt((x[0]**2)+(x[1]**2)))/sqrt((x[0]**2)+(x[1]**2))
 
 
-x0 = [0,-2]
+x0 = [0,-8]
 x_min = fmin(f, x0)
 
 delta = -15
@@ -28,5 +28,5 @@ ax.legend()
 bounds = [(-5, 5), (-5, 5)]
 result = differential_evolution(f, bounds)
 print(result.x, result.fun)
-ax.plot([result.x[0]],[result.x[1]], [result.fun],marker = 'o', markersize = 3, color = '101010')
+ax.plot([result.x[0]],[result.x[1]], [result.fun],marker = 'o', markersize = 5, color = '101010')
 show()

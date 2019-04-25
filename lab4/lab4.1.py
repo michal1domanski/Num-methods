@@ -1,6 +1,6 @@
-from cs50 import get_float
 from numpy import *
 from matplotlib.pyplot import *
+
 
 def Euler():
     a = 1
@@ -13,7 +13,7 @@ def Euler():
     x[0] = initial_x
 
     for i in range(t.size-1):
-        x[i+1] = x[i] + h * (1 * x[i])
+        x[i + 1] = x[i] + h * (1 * x[i])
 
     h = 0.001
     initial_y = 1

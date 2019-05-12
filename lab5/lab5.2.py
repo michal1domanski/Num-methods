@@ -1,4 +1,5 @@
 import requests
+import random
 import time
 
 # https://randomuser.me/api/?inc=id,name,login
@@ -18,7 +19,9 @@ def osoba():
     username = data["results"][0]['login']['username']
     first = data["results"][0]['name']['first']
     last = data["results"][0]['name']['last']
-    return first, last, ide, username 
+    btc = round(random.random(),5) * 10
+    pln = round(random.random(),8) * 100000
+    return first, last, username, ide, btc, pln 
 
 i = 10
 osoby = []
@@ -30,9 +33,26 @@ while len(osoby) < i:
 
 for k in range(len(osoby)):
     print(osoby[k])
+
+zliczanie_wymian = 0
+
+while zliczanie_wymian != i:
+
+    zliczanie_wymian += 1
+    # randy muszą zwrócić inta
+    rand = round(random.random(),2) * 100
+    rand2 = round(random.random(),2) * 100
+
+    while rand == rand2:
+        rand2 = round(random.random(),2) * 100
+
+    if osoby[rand][4] * best_bid >= osoby[rand2][5]:
+        print('wymiana moe zajść')
+    else:
+        print('wymiana nie moe zajść')
+
 end = time.time()
 print(end - begin)
-
 
 # 2 Use https://randomuser.me API to download a random user data.
 # Create and store 100 random users with ids, username, name (first + last name) using this API (2p)

@@ -1,6 +1,7 @@
 import requests
 import random
 import time
+from random import *
 
 # https://randomuser.me/api/?inc=id,name,login
 
@@ -19,40 +20,47 @@ def osoba():
     username = data["results"][0]['login']['username']
     first = data["results"][0]['name']['first']
     last = data["results"][0]['name']['last']
-    btc = round(random.random(),5) * 10
-    pln = round(random.random(),8) * 100000
+    btc = round(random(),3) * 10
+    pln = round(random(),8) * 1000000
     return first, last, username, ide, btc, pln 
 
-i = 10
+i = 100
 osoby = []
 while len(osoby) < i:
     try:
         osoby.append(osoba())
     except:
-        break
+        pass
 
 for k in range(len(osoby)):
     print(osoby[k])
 
 zliczanie_wymian = 0
 
-while zliczanie_wymian != i:
+while zliczanie_wymian < i:
 
-    zliczanie_wymian += 1
-    # randy muszą zwrócić inta
-    rand = round(random.random(),2) * 100
-    rand2 = round(random.random(),2) * 100
+    rand = choice(osoby)
+    rand2 = choice(osoby)
 
     while rand == rand2:
-        rand2 = round(random.random(),2) * 100
+        rand2 = choice(osoby)
 
-    if osoby[rand][4] * best_bid >= osoby[rand2][5]:
-        print('wymiana moe zajść')
+    a = uniform(0.2,0.7)
+    if rand[4] * a * best_bid <= rand2[5]:
+        time.sleep(1/3)
+        zliczanie_wymian += 1
+        btc_ex = rand[4] * a
+        pln_ex = rand[4] * a * best_bid
+        # rand2[4] = rand2[4] + btc_ex
+        # rand[4] = rand[4] - btc_ex
+        # rand2[5] = rand2[5] - pln_ex
+        # rand[5] = rand[5] + pln_ex
+        print(rand[2], 'exchanged', btc_ex, 'BTC for', pln_ex, 'PLN with', rand2[2])
     else:
-        print('wymiana nie moe zajść')
+        pass
 
 end = time.time()
-print(end - begin)
+print('time:', end - begin)
 
 # 2 Use https://randomuser.me API to download a random user data.
 # Create and store 100 random users with ids, username, name (first + last name) using this API (2p)

@@ -3,8 +3,6 @@ import random
 import time
 from random import *
 
-# https://randomuser.me/api/?inc=id,name,login
-
 begin = time.time()
 
 response = requests.get("https://bitbay.net/API/Public/BTCPLN/ticker.json")
@@ -13,25 +11,40 @@ best_bid=data['bid']
 best_ask=data['ask']
 print('bid:',best_bid,'ask:',best_ask)
 
-def osoba():
-    response = requests.get("https://randomuser.me/api/?inc=id,name,login")
-    data = response.json()
-    ide = data["results"][0]['id']['value']
-    username = data["results"][0]['login']['username']
-    first = data["results"][0]['name']['first']
-    last = data["results"][0]['name']['last']
-    btc = random() * 10
-    pln = random() * 100000
-    return first, last, username, ide, btc, pln 
+# def osoba():
+#     response = requests.get("https://randomuser.me/api/?inc=id,name,login")
+#     data = response.json()
+#     ide = data["results"][0]['id']['value']
+#     username = data["results"][0]['login']['username']
+#     first = data["results"][0]['name']['first']
+#     last = data["results"][0]['name']['last']
+#     btc = round(random() * 10,2)
+#     pln = round(uniform(5000,150000),2)
+#     return first, last, username, ide, btc, pln 
 
 i = 100
 osoby = []
 while len(osoby) < i:
     try:
-        osoby.append(osoba())
+        response = requests.get("https://randomuser.me/api/?inc=id,name,login")
+        data = response.json()
+        ide = data["results"][0]['id']['value']
+        username = data["results"][0]['login']['username']
+        first = data["results"][0]['name']['first']
+        last = data["results"][0]['name']['last']
+        btc = round(random() * 10,2)
+        pln = round(uniform(5000,150000),2)
+        
+        osoby.append(first)
+        osoby.append(last)
+        osoby.append(username)
+        osoby.append(ide)
+        osoby.append(btc)
+        osoby.append(pln)
+
     except:
         pass
-
+osoby = list(osoby)
 for k in range(len(osoby)):
     print(osoby[k])
 
@@ -46,12 +59,13 @@ while zliczanie_wymian < i:
         rand2 = choice(osoby)
     
     a = uniform(0.2,0.7)
-    btc_ex = rand[4] * a # x
-    pln_ex = rand[4] * a * best_bid # wymiana
+    value = rand[4]
+    btc_ex = value * a
+    pln_ex = value * a * best_bid
     
     if pln_ex <= rand2[5]:
-        rand = list(rand)
-        rand2 = list(rand2)
+        # rand = list(rand)
+        # rand2 = list(rand2)
         # time.sleep(1/3)
         zliczanie_wymian += 1
         #nie nadpisuje wartosci chuj
@@ -60,12 +74,11 @@ while zliczanie_wymian < i:
         rand[5] = rand[5] + pln_ex
         rand[4] = rand[4] - btc_ex
 
-        print(rand)
-        print(rand2)
+        # print(rand)
+        # print(rand2)
         print(rand[2], 'exchanged', btc_ex, 'BTC for', pln_ex, 'PLN with', rand2[2])
     else:
         pass
-
 
 for k in range(len(osoby)):
     print(osoby[k])
